@@ -19,6 +19,7 @@ namespace Elevator_app
 
         public void ElevatorRequest(int startingFloor, int destinationFloor, int numberOfPeople)
         {
+            // Validate the foor is acceptable and does not exceed building floors
             if (startingFloor < 0 || startingFloor > Floors || destinationFloor < 0 || destinationFloor > Floors)
             {
                 Console.WriteLine("Invalid floor.");

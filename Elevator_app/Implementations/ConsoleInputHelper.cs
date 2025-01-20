@@ -11,6 +11,7 @@ namespace Elevator_app.Implementations
     {
         public void ProcessInput(Building building)
         {
+            // Await user commands then process as needed
             while (true)
             {
                 Console.WriteLine("Enter starting floor, destination floor, and number of people waiting (format: starting,destination,people), type 'status' to see elevator status, or type 'exit' to quit:");
@@ -46,6 +47,8 @@ namespace Elevator_app.Implementations
 
         public Building InitialValues()
         {
+            // Get the starting values of our building, defaults have been provided
+
             Console.WriteLine("Enter number of floors in the building (default 10):");
             var floors = int.TryParse(Console.ReadLine(), out var inputFloors) ? inputFloors : 10;
 

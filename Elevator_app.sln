@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elevator_app", "Elevator_app\Elevator_app.csproj", "{26D5D5E4-4E4C-435C-81DC-671DF03698F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elevator_app.Tests", "Elevator_app.Tests\Elevator_app.Tests.csproj", "{D5A05E5E-5DF6-4AFF-AFFF-9A561C7E166D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elevator_app.Tests", "Elevator_app.Tests\Elevator_app.Tests.csproj", "{D5A05E5E-5DF6-4AFF-AFFF-9A561C7E166D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

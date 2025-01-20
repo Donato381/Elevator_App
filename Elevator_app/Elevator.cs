@@ -25,15 +25,17 @@ namespace Elevator_app
 
         public void Move(int floor)
         {
+            // Set the status based on whether we are going up or down
             Status = CurrentFloor < floor ? ElevatorStatus.MOVING_UP : ElevatorStatus.MOVING_DOWN;           
             
             Console.WriteLine($"Elevator {Id}: {Status.ToString()} from: {CurrentFloor} to: {floor}.");
-            CurrentFloor = floor;
-            ClearElevator();
+            CurrentFloor = floor; // set the current floor of the elevator 
+            ClearElevator(); // Empty the elevator of passengers
         }
 
         public bool AddPassengers(int passengers)
         {
+            // Ensure there is enough capacity
             if(passengers > Capacity)
                 return false;
             else
@@ -46,6 +48,7 @@ namespace Elevator_app
 
         private void ClearElevator()
         {
+            // If the elevator moved floor without anyone onbaord we dont need to output a message about passengers leaving
             if (Passengers > 0)
             {
                 Console.WriteLine($"Elevator {Id}: {Passengers} passenger/s leave at: {CurrentFloor}.");
@@ -53,7 +56,7 @@ namespace Elevator_app
             }
             Passengers = 0; // Assume all passengers are getting off
 
-            Status = ElevatorStatus.AVAILABLE;
+            Status = ElevatorStatus.AVAILABLE; // Reset the current status to available
         }
     }
 }
