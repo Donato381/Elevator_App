@@ -40,7 +40,9 @@ namespace Elevator_app.Implementations
                 }
                 else
                 {
-                    Console.WriteLine("Please enter in the format starting,destination,people.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Incorrect request formatting");
+                    Console.ResetColor();
                 }
             }
         }
@@ -51,12 +53,15 @@ namespace Elevator_app.Implementations
 
             Console.WriteLine("Enter number of floors in the building (default 10):");
             var floors = int.TryParse(Console.ReadLine(), out var inputFloors) ? inputFloors : 10;
+            Console.WriteLine($"Floors set to: {floors}");
 
             Console.WriteLine("Enter number of elevators (default 3):");
             var elevators = int.TryParse(Console.ReadLine(), out var inputElevators) ? inputElevators : 3;
+            Console.WriteLine($"Elevators set to: {elevators}");
 
             Console.WriteLine("Enter maximum capacity of each elevator (default 5):");
             var capacity = int.TryParse(Console.ReadLine(), out var inputCapacity) ? inputCapacity : 5;
+            Console.WriteLine($"Elevator capacity set to: {capacity}");
 
             return new Building(floors, elevators, capacity);
         }
