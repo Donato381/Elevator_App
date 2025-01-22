@@ -9,7 +9,7 @@ namespace Elevator_app.Implementations
 {
     internal class ConsoleInputHelper : IConsoleInputHelper
     {
-        public void ProcessInput(Building building)
+        public void ProcessInput(IBuilding building)
         {
             // Await user commands then process as needed
             while (true)
@@ -32,22 +32,30 @@ namespace Elevator_app.Implementations
                     building.ShowStatus();
                     continue;
                 }
-
-                var parts = input?.Split(',');
-                if (parts != null && parts.Length == 3 && int.TryParse(parts[0], out var startingFloor) && int.TryParse(parts[1], out var destinationFloor) && int.TryParse(parts[2], out var numberOfPeople))
+                try
                 {
-                    building.ElevatorRequest(startingFloor, destinationFloor, numberOfPeople);
+                    var parts = input?.Split(',');
+                    if (parts != null && parts.Length == 3 && int.TryParse(parts[0], out var startingFloor) && int.TryParse(parts[1], out var destinationFloor) && int.TryParse(parts[2], out var numberOfPeople))
+                    {
+                        building.ElevatorRequest(startingFloor, destinationFloor, numberOfPeople);
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Incorrect request formatting");
+                        Console.ResetColor();
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Incorrect request formatting");
+                    Console.WriteLine($"Incorrect request formatting: {ex.Message}");
                     Console.ResetColor();
                 }
             }
         }
 
-        public Building InitialValues()
+        public IBuilding InitialValues()
         {
             // Get the starting values of our building, defaults have been provided
 

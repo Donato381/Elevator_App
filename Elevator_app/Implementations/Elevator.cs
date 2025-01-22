@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Elevator_app.Enums;
+using Elevator_app.Interfaces;
 
-namespace Elevator_app
+namespace Elevator_app.Implementations
 {
-    public class Elevator
+    public class Elevator : IElevator
     {
         public int Id { get; }
         public int CurrentFloor { get; private set; } = 0;
@@ -18,7 +19,7 @@ namespace Elevator_app
         public Elevator(int id, int capacity)
         {
             Id = id;
-            this.Capacity = capacity;
+            Capacity = capacity;
             Passengers = 0;
             Status = ElevatorStatus.AVAILABLE;
         }
@@ -26,8 +27,8 @@ namespace Elevator_app
         public void Move(int floor)
         {
             // Set the status based on whether we are going up or down
-            Status = CurrentFloor < floor ? ElevatorStatus.MOVING_UP : ElevatorStatus.MOVING_DOWN;           
-            
+            Status = CurrentFloor < floor ? ElevatorStatus.MOVING_UP : ElevatorStatus.MOVING_DOWN;
+
             Console.WriteLine($"Elevator {Id}: {Status.ToString()} from: {CurrentFloor} to: {floor}.");
             CurrentFloor = floor; // set the current floor of the elevator 
             ClearElevator(); // Empty the elevator of passengers
@@ -36,14 +37,14 @@ namespace Elevator_app
         public bool AddPassengers(int passengers)
         {
             // Ensure there is enough capacity
-            if(passengers > Capacity)
+            if (passengers > Capacity)
                 return false;
             else
             {
                 Passengers = passengers;
                 return true;
             }
-            
+
         }
 
         private void ClearElevator()

@@ -1,19 +1,20 @@
-﻿using System;
+﻿using Elevator_app.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Elevator_app
+namespace Elevator_app.Implementations
 {
-    public class ElevatorManager
+    public class ElevatorManager : IElevatorManager
     {
-        private readonly List<Elevator> _elevators;
+        private readonly List<IElevator> _elevators;
 
         public ElevatorManager(int numberOfElevators, int elevatorCapacity)
         {
-            _elevators = new List<Elevator>();
+            _elevators = new List<IElevator>();
             for (int i = 1; i <= numberOfElevators; i++)
             {
                 _elevators.Add(new Elevator(i, elevatorCapacity));
@@ -56,7 +57,7 @@ namespace Elevator_app
                 elevator.Move(startingFloor);
 
                 // Add passengers to the elevator
-                elevator.AddPassengers(canAccommodate); 
+                elevator.AddPassengers(canAccommodate);
                 passengers -= canAccommodate; // Reduce the number of passengers waiting by the number aboard the elevator
                 elevator.Move(destinationFloor); // Move the elevator to the requested floor
             }
@@ -69,7 +70,7 @@ namespace Elevator_app
 
         }
 
-        public List<Elevator> Status()
+        public List<IElevator> Status()
         {
             // Output the current status of the elevators
             foreach (var elevator in _elevators)

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Elevator_app.Interfaces;
 
-namespace Elevator_app
+namespace Elevator_app.Implementations
 {
-    public class Building
+    public class Building : IBuilding
     {
         private int Floors { get; set; }
-        private ElevatorManager ElevatorManager { get; set; }
+        private IElevatorManager ElevatorManager { get; set; }
 
         public Building(int floors = 10, int numberOfElevators = 3, int elevatorCapacity = 5)
         {

@@ -2,7 +2,7 @@
 {
     internal interface IConsoleInputHelper
     {
-        Building InitialValues();
-        void ProcessInput(Building building);
+        IBuilding InitialValues();
+        void ProcessInput(IBuilding building);
     }
 }
